@@ -1,0 +1,23 @@
+jaffle_shop: # this needs to match the profile in your dbt_project.yml file
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      keyfile: /home/brunosantos/git/mesa_americanas/secrets/google_access_key_file.json # replace this with the full path to your keyfile
+      project: inteligencia-gglobo-sandbox # Replace this with your project id
+      dataset: user_gustavo # Replace this with dbt_your_name, e.g. dbt_bilbo
+      threads: 1
+      timeout_seconds: 300
+      location: US
+      priority: interactive
+my-bigquery-db:
+  outputs:
+    dev:
+      <optional_config>: <value>
+      dataset: user_gustavo
+      method: oauth
+      project: inteligencia-gglobo-sandbox
+      threads: 1
+      type: bigquery
+  target: dev
